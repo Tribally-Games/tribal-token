@@ -19,16 +19,20 @@ jobs:
       contents: read
       security-events: write
     container:
-      image: ghcr.io/nayms/contracts-builder:latest
+      image: ghcr.io/Tribally-Games/contracts-builder:latest
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - uses: actions/setup-node@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8          
+    
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "yarn"
+          cache: 'pnpm'
 
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
@@ -36,14 +40,14 @@ jobs:
           version: nightly
       
       - name: Install solc
-        run: svm install 0.8.20 && svm use 0.8.20
+        run: svm install 0.8.24 && svm use 0.8.24
 
       - name: Compile
-        run: yarn build --sizes
+        run: pnpm build --sizes
         id: build
 
       - name: Run tests with coverage
-        run: yarn test-coverage
+        run: pnpm test-coverage
         id: test
 
       - name: Upload coverage report to Coveralls

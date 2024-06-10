@@ -68,7 +68,7 @@ $ pnpm deploy-local
 ### Public
 
 
-Set the following environment variables:
+Set the deployment wallet's private key as an environment variable:
 
 ```shell
 $ export PRIVATE_KEY="0x..."

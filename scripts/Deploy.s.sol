@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPLv3
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.24;
 
 import { Vm } from "forge-std/Vm.sol";
 import { Script, console2 as c } from "forge-std/Script.sol";
