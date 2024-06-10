@@ -32,15 +32,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
 
-      - name: Install Foundry
-        uses: foundry-rs/foundry-toolchain@v1
-        with:
-          version: nightly
-      
-      - name: Install solc
-        run: svm install 0.8.24 && svm use 0.8.24
+      - run: echo "/root/.cargo/bin:/root/.foundry/bin:/root/.bun/bin" >> $GITHUB_PATH
+      - run: svm install 0.8.24 && svm use 0.8.24
+      # disable safe.directory system to avoid forge install error
+      - run: git config --global --add safe.directory '*' 
+      # install deps
+      - run: forge install          
 
       - name: Compile
         run: pnpm build --sizes
