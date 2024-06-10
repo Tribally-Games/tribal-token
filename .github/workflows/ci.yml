@@ -19,7 +19,7 @@ jobs:
       contents: read
       security-events: write
     container:
-      image: ghcr.io/Tribally-Games/contracts-builder:latest
+      image: ghcr.io/tribally-games/contracts-builder:latest
     steps:
       - uses: actions/checkout@v4
         with:
