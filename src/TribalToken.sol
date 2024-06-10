@@ -30,7 +30,7 @@ contract TribalToken is ERC20, Ownable {
    * @param _owner The address of the initial owner of the contract.
    * @param _minter The address of the initial minter of the contract.
    */
-  constructor(address _owner, address _minter) ERC20("Naym", "NAYM") Ownable(_owner) {
+  constructor(address _owner, address _minter) ERC20("Tribal", "TRIBAL") Ownable(_owner) {
     minter = _minter;
   }
 
