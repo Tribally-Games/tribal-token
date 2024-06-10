@@ -22,8 +22,8 @@ contract TribalTokenTest is Test {
     }
 
     function test_Init() public {
-        assertEq(t.name(), "Naym");
-        assertEq(t.symbol(), "NAYM");
+        assertEq(t.name(), "Tribal");
+        assertEq(t.symbol(), "TRIBAL");
         assertEq(t.decimals(), 18);
         assertEq(t.totalSupply(), 0);
         assertEq(t.owner(), owner1);
