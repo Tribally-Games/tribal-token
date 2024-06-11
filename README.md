@@ -13,7 +13,8 @@ Features:
 
 ## On-chain addresses
 
-_TODO: Live deployed addresses here_
+* Base Sepolia: _TODO_
+* Base: _TODO_
 
 ## Developer guide
 
@@ -49,7 +50,7 @@ $ pnpm devnet
 ## Deployment
 
 * _The `owner` and `minter` are both initially set to be the deployment wallet's address._
-* _[CREATE2](https://book.getfoundry.sh/tutorials/create2-tutorial) is used for deployment, so the address will always be the same as long as the deployment wallet and bytecode are the same, irrespective of chain, nonce, etc._
+* _[CREATE2](https://book.getfoundry.sh/tutorials/create2-tutorial) is used for deployment, so the contract address on every chain will be the same as long as the deployment wallet and bytecode are the same, irrespective of chain, nonce, etc._
 
 ### Deployment
 
