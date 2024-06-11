@@ -5,8 +5,8 @@ import {Test, console} from "forge-std/Test.sol";
 import { Vm } from "forge-std/Vm.sol";
 
 import { TribalToken } from "../src/TribalToken.sol";
-import { IERC20Errors } from "openzeppelin/interfaces/draft-IERC6093.sol";
-import { Ownable } from "openzeppelin/access/Ownable.sol";
+import { IERC20Errors } from "@openzeppelin/contracts/interfaces/draft-IERC6093.sol";
+import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 
 contract TribalTokenTest is Test {
     TribalToken public t;
@@ -18,7 +18,7 @@ contract TribalTokenTest is Test {
     address user1 = address(0x1234);
 
     function setUp() public {
-        t = new TribalToken(owner1, minter1);
+        t = new TribalToken(owner1, minter1, address(0));
     }
 
     function test_Init() public {

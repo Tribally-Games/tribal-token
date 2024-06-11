@@ -76,8 +76,14 @@ $ export PRIVATE_KEY="0x..."
 
 Then run:
 
-* Testnet (Base Sepolia): `pnpm deploy-base-sepolia`
-* Mainnet (Base): `pnpm deploy-base`
+* Testnet (Base Sepolia): 
+  * Deploy: `pnpm deploy-base-sepolia`
+  * Verify: `pnpm verify-base-sepolia`
+* Mainnet (Base):
+  * Deploy: `pnpm deploy-base`
+  * Verify: `pnpm verify-base`
+
+_Note: [LayerZero endpoints](https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts) are automatically passed as arguments to the deploy script_.
 
 ## License
 

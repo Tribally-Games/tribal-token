@@ -9,12 +9,15 @@ contract Deploy is Script {
   bytes32 internal constant CREATE2_SALT = keccak256("Tribally.deployment.salt");
 
   function run() public {
+    address endpoint = vm.envAddress("LZ-ENDPOINT");
+    c.log("LayerZero endpoint:", endpoint);
+
     address wallet = msg.sender;
     c.log("Wallet:", wallet);
 
     address expectedAddr = vm.computeCreate2Address(
       CREATE2_SALT, 
-      hashInitCode(type(TribalToken).creationCode, abi.encode(wallet, wallet))
+      hashInitCode(type(TribalToken).creationCode, abi.encode(wallet, wallet, endpoint))
     );
 
     if (expectedAddr.code.length > 0) {

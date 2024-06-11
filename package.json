@@ -10,9 +10,9 @@
     "test-coverage": "forge coverage --report lcov",
     "devnet": "anvil",
     "commitlint": "commitlint --edit",
-    "deploy-local": "forge script scripts/Deploy.s.sol --rpc-url http://localhost:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast",
-    "deploy-base-sepolia": "forge script scripts/Deploy.s.sol --rpc-url https://sepolia.base.org --chain-id 84532 --private-key $PRIVATE_KEY --broadcast",
-    "deploy-base": "forge script scripts/Deploy.s.sol --rpc-url https://mainnet.base.org --chain-id 8453 --private-key $PRIVATE_KEY --broadcast"
+    "deploy-local": "LZ_ENDPOINT=0x0000000000000000000000000000000000000000 forge script --rpc-url http://localhost:8545 --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --broadcast scripts/Deploy.s.sol",
+    "deploy-base-sepolia": "LZ_ENDPOINT=0x6EDCE65403992e310A62460808c4b910D972f10f forge script scripts/Deploy.s.sol --rpc-url https://sepolia.base.org --chain-id 84532 --private-key $PRIVATE_KEY --broadcast scripts/Deploy.s.sol",
+    "deploy-base": "LZ_ENDPOINT=0x1a44076050125825900e736c501f859c50fE728c script scripts/Deploy.s.sol --rpc-url https://mainnet.base.org --chain-id 8453 --private-key $PRIVATE_KEY --broadcast scripts/Deploy.s.sol"
   },
   "commitlint": {
     "extends": [
