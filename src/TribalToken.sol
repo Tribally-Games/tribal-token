@@ -2,10 +2,10 @@
 pragma solidity ^0.8.24;
 
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
-import { OFT } from "@layerzerolabs/lz-evm-protocol-v2/contracts/oft/OFT.sol";
+import { OFT } from "@layerzerolabs/lz-evm-oapp-v2/contracts/oft/OFT.sol";
 
 
-contract TribalToken is OFT, Ownable {
+contract TribalToken is OFT {
   /**
    * @dev The caller account is not authorized to mint.
    */
