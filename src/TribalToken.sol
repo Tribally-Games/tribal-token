@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: GPLv3
 pragma solidity ^0.8.24;
 
-import { ERC20 } from "openzeppelin/token/ERC20/ERC20.sol";
-import { Ownable } from "openzeppelin/access/Ownable.sol";
+import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
+import { OFT } from "@layerzerolabs/lz-evm-oapp-v2/contracts/oft/OFT.sol";
 
-contract TribalToken is ERC20, Ownable {
+
+contract TribalToken is OFT {
   /**
    * @dev The caller account is not authorized to mint.
    */
@@ -29,8 +30,9 @@ contract TribalToken is ERC20, Ownable {
    * @dev Constructor
    * @param _owner The address of the initial owner of the contract.
    * @param _minter The address of the initial minter of the contract.
+   * @param _endpoint The address of the LayerZero endpoint.
    */
-  constructor(address _owner, address _minter) ERC20("Tribal", "TRIBAL") Ownable(_owner) {
+  constructor(address _owner, address _minter, address _endpoint) OFT("Tribal", "TRIBAL", _endpoint, _owner) Ownable(_owner) {
     minter = _minter;
   }
 

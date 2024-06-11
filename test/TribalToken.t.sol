@@ -5,8 +5,9 @@ import {Test, console} from "forge-std/Test.sol";
 import { Vm } from "forge-std/Vm.sol";
 
 import { TribalToken } from "../src/TribalToken.sol";
-import { IERC20Errors } from "openzeppelin/interfaces/draft-IERC6093.sol";
-import { Ownable } from "openzeppelin/access/Ownable.sol";
+import { IERC20Errors } from "@openzeppelin/contracts/interfaces/draft-IERC6093.sol";
+import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
+import { LzDummyEndpoint } from "../src/LzDummyEndpoint.sol";
 
 contract TribalTokenTest is Test {
     TribalToken public t;
@@ -16,9 +17,10 @@ contract TribalTokenTest is Test {
     address minter1 = address(0x123);
     address minter2 = address(0x456);
     address user1 = address(0x1234);
+    address user2 = address(0x12345);
 
     function setUp() public {
-        t = new TribalToken(owner1, minter1);
+        t = new TribalToken(owner1, minter1, address(new LzDummyEndpoint()));
     }
 
     function test_Init() public {
@@ -62,6 +64,27 @@ contract TribalTokenTest is Test {
         vm.prank(owner1);
         t.setMinter(address(0));
         assertEq(t.minter(), address(0));
+    }
+
+    function test_Transfer() public {
+        vm.prank(minter1);
+        t.mint(user1, 100);
+        assertEq(t.totalSupply(), 100);
+        assertEq(t.balanceOf(user1), 100);
+
+        vm.prank(user1);
+        t.transfer(user2, 50);
+        assertEq(t.balanceOf(user1), 50);
+        assertEq(t.balanceOf(user2), 50);   
+
+        vm.prank(user2);
+        t.approve(user1, 25);
+        assertEq(t.allowance(user2, user1), 25);
+        vm.prank(user1);
+        t.transferFrom(user2, user1, 25);
+        assertEq(t.allowance(user2, user1), 0);
+        assertEq(t.balanceOf(user1), 75);
+        assertEq(t.balanceOf(user2), 25);
     }
 
     function test_Mint() public {
