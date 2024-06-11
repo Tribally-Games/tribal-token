@@ -51,22 +51,7 @@ $ pnpm devnet
 * _The `owner` and `minter` are both initially set to be the deployment wallet's address._
 * _[CREATE2](https://book.getfoundry.sh/tutorials/create2-tutorial) is used for deployment, so the address will always be the same as long as the deployment wallet and bytecode are the same, irrespective of chain, nonce, etc._
 
-### Local (anvil)
-
-To deploy locally, first run a local devnet:
-
-```shell
-$ pnpm devnet
-```
-
-Then run:
-
-```shell
-$ pnpm deploy-local
-```
-
-### Public
-
+### Deployment
 
 Set the deployment wallet's private key as an environment variable:
 
@@ -74,16 +59,27 @@ Set the deployment wallet's private key as an environment variable:
 $ export PRIVATE_KEY="0x..."
 ```
 
-Then run:
+Now run (depending on the environment):
 
-* Testnet (Base Sepolia): 
-  * Deploy: `pnpm deploy-base-sepolia`
-  * Verify: `pnpm verify-base-sepolia`
-* Mainnet (Base):
-  * Deploy: `pnpm deploy-base`
-  * Verify: `pnpm verify-base`
+* Testnet (Base Sepolia): `pnpm deploy-base-sepolia`
+* Mainnet (Base): `pnpm deploy-base`
 
-_Note: [LayerZero endpoints](https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts) are automatically passed as arguments to the deploy script_.
+**Note:** The deploy script will output _constructor args_ as well as the deployed contract address. You will need these for the contract source code verification step below.
+
+### Contract source code verification
+
+It's important to verify the contract source code on block explorer so that people can trust the contract. To do this, first set the environment variables:
+
+```shell
+$ export VERIFIER_API_KEY=... # your Basescan.org API key
+$ export CONSTRUCTOR_ARGS=... # see deployment step above
+$ export ADDRESS=... # see deployment step above
+```
+
+Now run (depending on the environment):
+
+* Testnet (Base Sepolia): `pnpm verify-base-sepolia`
+* Mainnet (Base): `pnpm verify-base`
 
 ## License
 

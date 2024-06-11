@@ -15,15 +15,14 @@ contract Deploy is Script {
 
     address endpoint = vm.envAddress("LZ_ENDPOINT");
     c.log("LayerZero endpoint:", endpoint);
-    if (endpoint == address(0)) {
-      c.log("Empty LayerZero endpoint, deploying fresh one...");
-      endpoint = address(new LzDummyEndpoint());
-      c.log("LayerZero endpoint deployed at:", endpoint);
-    }
+
+    bytes memory args = abi.encode(wallet, wallet, endpoint);
+    c.log("Constructor args:"); 
+    c.logBytes(args);
 
     address expectedAddr = vm.computeCreate2Address(
       CREATE2_SALT, 
-      hashInitCode(type(TribalToken).creationCode, abi.encode(wallet, wallet, endpoint))
+      hashInitCode(type(TribalToken).creationCode, args)
     );
 
     if (expectedAddr.code.length > 0) {
