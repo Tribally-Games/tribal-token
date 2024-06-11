@@ -12,7 +12,8 @@
     "commitlint": "commitlint --edit",
     "deploy-base-sepolia": "LZ_ENDPOINT=0x6EDCE65403992e310A62460808c4b910D972f10f forge script scripts/Deploy.s.sol --rpc-url https://sepolia.base.org --chain-id 84532 --private-key $PRIVATE_KEY --broadcast scripts/Deploy.s.sol",
     "verify-base-sepolia": "forge verify-contract --chain-id 84532 --etherscan-api-key $VERIFIER_API_KEY --verifier-url https://api-sepolia.basescan.org/api --num-of-optimizations 200 --watch --constructor-args $CONSTRUCTOR_ARGS $ADDRESS src/TribalToken.sol:TribalToken",
-    "deploy-base": "LZ_ENDPOINT=0x1a44076050125825900e736c501f859c50fE728c script scripts/Deploy.s.sol --rpc-url https://mainnet.base.org --chain-id 8453 --private-key $PRIVATE_KEY --broadcast scripts/Deploy.s.sol"
+    "deploy-base": "LZ_ENDPOINT=0x1a44076050125825900e736c501f859c50fE728c script scripts/Deploy.s.sol --rpc-url https://mainnet.base.org --chain-id 8453 --private-key $PRIVATE_KEY --broadcast scripts/Deploy.s.sol",
+    "verify-base": "forge verify-contract --chain-id 8453 --etherscan-api-key $VERIFIER_API_KEY --verifier-url https://api.basescan.org/api --num-of-optimizations 200 --watch --constructor-args $CONSTRUCTOR_ARGS $ADDRESS src/TribalToken.sol:TribalToken"
   },
   "commitlint": {
     "extends": [
