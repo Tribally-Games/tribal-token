@@ -14,15 +14,15 @@ Features:
 
 ## On-chain addresses
 
-* Base Sepolia: _TODO_
-* Base: _TODO_
+* Base: [0xD55592FB0907E505C361Ef6D007424f105CcBD93](https://basescan.org/address/0xD55592FB0907E505C361Ef6D007424f105CcBD93)
+* Base Sepolia: [0xD55592FB0907E505C361Ef6D007424f105CcBD93](https://sepolia.basescan.org/address/0xD55592FB0907E505C361Ef6D007424f105CcBD93)
 
 ## Developer guide
 
 Install pre-requisites:
 
 * [Foundry](https://book.getfoundry.sh/)
-* [pnpm](https://pnpm.io/)
+* [bun](https://bun.sh/)
 
 Install dependencies:
 
@@ -50,15 +50,13 @@ $ pnpm devnet
 
 ## Deployment
 
-* _The `owner` and `minter` are both initially set to be the deployment wallet's address._
-* _[CREATE2](https://book.getfoundry.sh/tutorials/create2-tutorial) is used for deployment, so the contract address on every chain will be the same as long as the deployment wallet and bytecode are the same, irrespective of chain, nonce, etc._
+_NOTE: [CREATE3](https://ethereum-magicians.org/t/keyless-contract-deployment-with-create3/16025) is used for deployments. This ensure that the token address will also be the same on every chain._
 
-### Deployment
-
-Set the deployment wallet's private key as an environment variable:
+Set the environment variables:
 
 ```shell
-$ export PRIVATE_KEY="0x..."
+$ export VERIFIER_API_KEY=... # your block explorer (e.g Basescan.org) API key
+$ export PRIVATE_KEY="0x..." # your deployer wallet private key
 ```
 
 Now run (depending on the environment):
@@ -66,22 +64,7 @@ Now run (depending on the environment):
 * Testnet (Base Sepolia): `pnpm deploy-base-sepolia`
 * Mainnet (Base): `pnpm deploy-base`
 
-**Note:** The deploy script will output _constructor args_ as well as the deployed contract address. You will need these for the contract source code verification step below.
-
-### Contract source code verification
-
-It's important to verify the contract source code on block explorer so that people can trust the contract. To do this, first set the environment variables:
-
-```shell
-$ export VERIFIER_API_KEY=... # your Basescan.org API key
-$ export CONSTRUCTOR_ARGS=... # see deployment step above
-$ export ADDRESS=... # see deployment step above
-```
-
-Now run (depending on the environment):
-
-* Testnet (Base Sepolia): `pnpm verify-base-sepolia`
-* Mainnet (Base): `pnpm verify-base`
+This will deploy the CREATE3 factory, then the token contract, and then verify its source code on the block explorer.
 
 ## License
 
