@@ -22,7 +22,7 @@ Features:
 Install pre-requisites:
 
 * [Foundry](https://book.getfoundry.sh/)
-* [bun](https://bun.sh/)
+* [pnpm](https://pnpm.io/)
 
 Install dependencies:
 

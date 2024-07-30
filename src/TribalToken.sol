@@ -7,6 +7,11 @@ import { OFT } from "@layerzerolabs/lz-evm-oapp-v2/contracts/oft/OFT.sol";
 
 contract TribalToken is OFT {
   /**
+   * @dev A zero address was passed.
+   */
+  error ZeroAddress();
+
+  /**
    * @dev The caller account is not authorized to mint.
    */
   error UnauthorizedMinter(address account);
@@ -29,7 +34,7 @@ contract TribalToken is OFT {
   /**
    * @dev Constructor
    * @param _owner The address of the initial owner of the contract.
-   * @param _minter The address of the initial minter of the contract.
+   * @param _minter The address of the initial minter of the contract. Can be the zero address to disable minting.
    * @param _endpoint The address of the LayerZero endpoint.
    */
   constructor(address _owner, address _minter, address _endpoint) OFT("Tribal", "TRIBAL", _endpoint, _owner) Ownable(_owner) {
@@ -38,7 +43,7 @@ contract TribalToken is OFT {
 
   /**
    * @dev The owner can set the minter.
-   * @param _minter The address of the new minter.
+   * @param _minter The address of the new minter. Can be the zero address to disable minting.
    */
   function setMinter(address _minter) public onlyOwner {
     minter = _minter;

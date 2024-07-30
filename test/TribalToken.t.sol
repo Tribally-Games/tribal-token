@@ -23,7 +23,7 @@ contract TribalTokenTest is Test {
         t = new TribalToken(owner1, minter1, address(new LzDummyEndpoint()));
     }
 
-    function test_Init() public {
+    function test_Init() public view {
         assertEq(t.name(), "Tribal");
         assertEq(t.symbol(), "TRIBAL");
         assertEq(t.decimals(), 18);
