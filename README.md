@@ -1,4 +1,4 @@
-![Build status](https://github.com/Tribally-Games/tribal-token/actions/workflows/ci.yml/badge.svg?branch=master)
+[![Build status](https://github.com/Tribally-Games/tribal-token/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/Tribally-Games/tribal-token/actions/workflows/ci.yml)
 [![Coverage Status](https://coveralls.io/repos/github/Tribally-Games/tribal-token/badge.svg)](https://coveralls.io/github/Tribally-Games/tribal-token)
 
 # tribal-token
