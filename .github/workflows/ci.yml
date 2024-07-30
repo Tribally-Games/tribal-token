@@ -39,7 +39,7 @@ jobs:
       - run: git config --global --add safe.directory '*' 
       # install deps
       - run: forge install          
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install
 
       - name: Compile
         run: pnpm build --sizes
