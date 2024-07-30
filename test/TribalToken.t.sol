@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPLv3
 pragma solidity 0.8.24;
 
-import {Test, console} from "forge-std/Test.sol";
+import "forge-std/Test.sol";
 import { Vm } from "forge-std/Vm.sol";
 
 import { TribalToken } from "../src/TribalToken.sol";
@@ -64,6 +64,23 @@ contract TribalTokenTest is Test {
         vm.prank(owner1);
         t.setMinter(address(0));
         assertEq(t.minter(), address(0));
+
+        // event emitted
+        vm.recordLogs();
+
+        vm.prank(owner1);
+        t.setMinter(minter2);
+        
+        Vm.Log[] memory entries = vm.getRecordedLogs();
+
+        assertEq(entries.length, 1, "Invalid entry count");
+        assertEq(
+            entries[0].topics[0],
+            keccak256("MinterChanged(address)"),
+            "Invalid event signature"
+        );
+        (address user) = abi.decode(entries[0].data, (address));  
+        assertEq(user, minter2, "Invalid user");
     }
 
     function test_Transfer() public {

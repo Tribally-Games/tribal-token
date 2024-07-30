@@ -7,14 +7,14 @@ import { OFT } from "@layerzerolabs/lz-evm-oapp-v2/contracts/oft/OFT.sol";
 
 contract TribalToken is OFT {
   /**
-   * @dev A zero address was passed.
-   */
-  error ZeroAddress();
-
-  /**
    * @dev The caller account is not authorized to mint.
    */
   error UnauthorizedMinter(address account);
+
+  /**
+   * @dev The minter has changed.
+   */
+  event MinterChanged(address newMinter); 
 
   /**
    * @dev The minter can mint new tokens.
@@ -47,6 +47,8 @@ contract TribalToken is OFT {
    */
   function setMinter(address _minter) public onlyOwner {
     minter = _minter;
+
+    emit MinterChanged(_minter);
   }
 
   /**
