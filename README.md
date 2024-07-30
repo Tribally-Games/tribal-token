@@ -9,6 +9,7 @@ Features:
 
 * Is a LayerZero [Omnichain Fungible Token (OFT)](https://docs.layerzero.network/v2/developers/evm/oft/quickstart).
 * Has an owner that can be changed (`0x0000...` not allowed).
+  * _Note: Uses the `Ownable` contract from OpenZeppelin, inherited from `OFT`._
 * Has changeable minter that is set by owner. Only the minter can mint new tokens.
 * Anyone can burn their own tokens.
 
