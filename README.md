@@ -15,8 +15,8 @@ Features:
 
 ## On-chain addresses
 
-* Base: [0xD55592FB0907E505C361Ef6D007424f105CcBD93](https://basescan.org/address/0xD55592FB0907E505C361Ef6D007424f105CcBD93)
-* Base Sepolia: [0xD55592FB0907E505C361Ef6D007424f105CcBD93](https://sepolia.basescan.org/address/0xD55592FB0907E505C361Ef6D007424f105CcBD93)
+* Base: [0xe13E40e8FdB815FBc4a1E2133AB5588C33BaC45d](https://basescan.org/address/0xe13E40e8FdB815FBc4a1E2133AB5588C33BaC45d)
+* Base Sepolia: [0xe13E40e8FdB815FBc4a1E2133AB5588C33BaC45d](https://sepolia.basescan.org/address/0xe13E40e8FdB815FBc4a1E2133AB5588C33BaC45d)
 
 ## Developer guide
 
